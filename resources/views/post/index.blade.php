@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Landing Page</title>
+    <title>Personal Blog Site</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Add your custom styles here */
@@ -29,7 +29,7 @@
     <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand " href="#">Personal Blog</a>
+            <a class="navbar-brand  font-weight-bold font-size-3" href="#">Personal Blog</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -94,7 +94,17 @@
                          </div>
                         </div>
                 
-                        <a href="{{route('post.show',$post->id)}}" class="btn btn-primary">আরো দেখুন</a>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{route('post.show',$post->id)}}" class="btn btn-primary">আরো দেখুন</a>
+                            <div class="d-flex ">
+                                <div><a class="text-decoration-none " href="{{route('post.edit',$post->id)}}">Edit&nbsp;|&nbsp;</a></div>
+                                <div ><form action="{{route('post.destroy',$post->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a class="text-decoration-none" href=""type="submit" >Delete</a>
+                                  </form></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

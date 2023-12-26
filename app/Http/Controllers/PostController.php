@@ -42,9 +42,17 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    public function edit($id){
+       $post=Post::find($id);
+       return view('post.edit', compact('post'));
+       
+
+    }
     public function update(Request $request, string $id)
     {
-        //
+       $post = Post::find($id);
+       $post->update($request->all());
+       return redirect()->route('post.index')->with('success', 'Post Updated successfully');
     }
 
     /**
@@ -52,6 +60,8 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post=Post::find($id);
+        $post->delete();
+        return redirect()->route('post.index')->with('success', 'Post deleted successfully');
     }
 }
